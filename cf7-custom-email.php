@@ -1,11 +1,19 @@
 <?php
 
 /*
-Plugin Name: Cf7 Custom Email
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
-Description: A brief description of the Plugin.
+Plugin Name: CF7 Custom Email Routing
+Plugin URI: https://github.com/pedrokeilerbatistarojo/cf7-custom-email
+Description: Changes the destination email address based on a field selection in various Contact Form 7 forms.
 Version: 1.0
-Author: Usr
-Author URI: http://URI_Of_The_Plugin_Author
-License: A "Slug" license name e.g. GPL2
+Author: Pedro Keiler Batista Rojo <pedrokeilerbatistarojo@gmail.com>
+Author URI: https://github.com/pedrokeilerbatistarojo/
 */
+
+
+// Prevent direct file access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+
+
