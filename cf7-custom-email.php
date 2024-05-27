@@ -33,7 +33,7 @@ function cf7_custom_email_routing($contact_form): void
         $alternative_email = '';
 
         // Defined Rules
-        if ($form_id === '2ab79a7'){
+        if ($form_id == '3459'){
             $location = $posted_data['your-location'] ?? '';
             $type = $posted_data['your-type'] ?? '';
 
@@ -68,7 +68,6 @@ function cf7_custom_email_routing($contact_form): void
                 if ($type === 'No'){
                     $alternative_email = 'mayra@elischools.com';
                 }
-
             }
         }
 
