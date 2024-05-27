@@ -18,13 +18,15 @@ if (!defined('ABSPATH')) {
 add_action('wpcf7_before_send_mail', 'cf7_custom_email_routing');
 
 
-function cf7_custom_email_routing($contact_form) {
+function cf7_custom_email_routing($contact_form): void
+{
 
     $form_id = $contact_form->id();
 
     $submission = WPCF7_Submission::get_instance();
 
     if ($submission) {
+
         // Obtain Form Data
         $posted_data = $submission->get_posted_data();
 
@@ -76,6 +78,10 @@ function cf7_custom_email_routing($contact_form) {
 
             // Save the changes
             $contact_form->set_properties(['mail' => $mail]);
+        }else{
+            error_log('Could not determine alternate email address for form with ID:' . $form_id);
         }
+    }else{
+        error_log('Could not get the form submit instance for the form with ID:' . $form_id);
     }
 }
