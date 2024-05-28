@@ -21,6 +21,9 @@ add_action('wpcf7_before_send_mail', 'cf7_custom_email_routing');
 function cf7_custom_email_routing($contact_form): void
 {
 
+    $eliEmail = 'kattia@elischools.com';
+    $iehEmail = 'hello@irelandemploymenthub.com';
+
     $form_id = $contact_form->id();
 
     $submission = WPCF7_Submission::get_instance();
@@ -59,7 +62,7 @@ function cf7_custom_email_routing($contact_form): void
 
             if ($location === 'No'){
 
-                $alternative_email = 'mayra@elischools.com';
+                $alternative_email = $eliEmail;
 
             }else if ($location === 'Yes'){
 
@@ -70,7 +73,7 @@ function cf7_custom_email_routing($contact_form): void
                  */
 
                 if ($type === 'Yes'){
-                    $alternative_email = 'hello@irelandemploymenthub.com';
+                    $alternative_email = $iehEmail;
                 }
 
                 /*
@@ -80,7 +83,7 @@ function cf7_custom_email_routing($contact_form): void
                  */
 
                 if ($type === 'No'){
-                    $alternative_email = 'mayra@elischools.com';
+                    $alternative_email = $eliEmail;
                 }
             }
         }
