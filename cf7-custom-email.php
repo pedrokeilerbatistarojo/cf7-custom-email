@@ -32,13 +32,27 @@ function cf7_custom_email_routing($contact_form): void
 
         $alternative_email = '';
 
+        //Log form id
+        error_log("Processing form ID: " . $form_id);
+
         // Defined Rules
         if ($form_id == '3459'){
+
             $location = $posted_data['your-location'] ?? '';
             $type = $posted_data['your-type'] ?? '';
 
+            // Cast to array and join the array elements with a comma.
+            $location = implode(', ', (array) $location);
+            $type = implode(', ', (array) $type);
+
+            error_log("Location: " . $location);
+            error_log("Type: " . $type);
+
+            error_log("Location: " . $location);
+            error_log("Type: " . $type);
+
             /*
-             * Case 1:
+             * Case 3:
              * If you mark that you are not in Ireland,
              * please contact me at mayra@elischools.com
              */
@@ -50,7 +64,7 @@ function cf7_custom_email_routing($contact_form): void
             }else if ($location === 'Yes'){
 
                 /*
-                 * Case 2:
+                 * Case 1:
                  * If you click YES you are in Ireland and YES you are an ELI or WST student,
                  * you must go to hello@irelandemploymenthub.com
                  */
@@ -60,7 +74,7 @@ function cf7_custom_email_routing($contact_form): void
                 }
 
                 /*
-                 * Case 3:
+                 * Case 2:
                  * If you click that you are in Ireland but are not an ELI or WST student,
                  * please contact me at mayra@elischools.com
                  */
@@ -77,6 +91,8 @@ function cf7_custom_email_routing($contact_form): void
 
             // Save the changes
             $contact_form->set_properties(['mail' => $mail]);
+
+            error_log("Email routed to: " . $alternative_email);
         }else{
             error_log('Could not determine alternate email address for form with ID:' . $form_id);
         }
